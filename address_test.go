@@ -6,7 +6,7 @@ import (
 	"testing"
 
 	"github.com/google/go-cmp/cmp"
-	"github.com/jsimonetti/rtnetlink/internal/unix"
+	"github.com/rgwohlbold/rtnetlink/internal/unix"
 	"github.com/mdlayher/netlink/nlenc"
 )
 

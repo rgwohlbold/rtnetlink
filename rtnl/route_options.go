@@ -3,7 +3,7 @@ package rtnl
 import (
 	"net"
 
-	"github.com/jsimonetti/rtnetlink"
+	"github.com/rgwohlbold/rtnetlink"
 )
 
 // RouteOptions is the functional options struct

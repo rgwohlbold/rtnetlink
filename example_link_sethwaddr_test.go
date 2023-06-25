@@ -4,7 +4,7 @@ import (
 	"log"
 	"net"
 
-	"github.com/jsimonetti/rtnetlink"
+	"github.com/rgwohlbold/rtnetlink"
 )
 
 // Set the hw address of an interface

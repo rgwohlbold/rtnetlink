@@ -3,9 +3,9 @@ package rtnl
 import (
 	"net"
 
-	"github.com/jsimonetti/rtnetlink/internal/unix"
+	"github.com/rgwohlbold/rtnetlink/internal/unix"
 
-	"github.com/jsimonetti/rtnetlink"
+	"github.com/rgwohlbold/rtnetlink"
 )
 
 // Links return the list of interfaces available on the system.

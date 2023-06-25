@@ -4,7 +4,7 @@
 // It is based on netlink messages.
 //
 // A convenient, high-level API wrapper is available using package rtnl:
-// https://godoc.org/github.com/jsimonetti/rtnetlink/rtnl.
+// https://godoc.org/github.com/rgwohlbold/rtnetlink/rtnl.
 //
 // The base rtnetlink library xplicitly only exposes a limited low-level API to rtnetlink.
 // It is not the intention (nor wish) to create an iproute2 replacement.

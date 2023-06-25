@@ -2,7 +2,7 @@
 package rtnl
 
 import (
-	"github.com/jsimonetti/rtnetlink"
+	"github.com/rgwohlbold/rtnetlink"
 	"github.com/mdlayher/netlink"
 )
 

@@ -7,7 +7,7 @@ import (
 	"net"
 	"unsafe"
 
-	"github.com/jsimonetti/rtnetlink/internal/unix"
+	"github.com/rgwohlbold/rtnetlink/internal/unix"
 
 	"github.com/mdlayher/netlink"
 )

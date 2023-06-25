@@ -3,7 +3,7 @@ package rtnetlink_test
 import (
 	"log"
 
-	"github.com/jsimonetti/rtnetlink"
+	"github.com/rgwohlbold/rtnetlink"
 )
 
 // List all rules

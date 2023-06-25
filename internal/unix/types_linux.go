@@ -67,6 +67,7 @@ const (
 	IFLA_PHYS_PORT_ID           = linux.IFLA_PHYS_PORT_ID
 	IFLA_PHYS_SWITCH_ID         = linux.IFLA_PHYS_SWITCH_ID
 	IFLA_PHYS_PORT_NAME         = linux.IFLA_PHYS_PORT_NAME
+	IFLA_PROTO_DOWN             = linux.IFLA_PROTO_DOWN
 	IFLA_INFO_KIND              = linux.IFLA_INFO_KIND
 	IFLA_INFO_SLAVE_KIND        = linux.IFLA_INFO_SLAVE_KIND
 	IFLA_INFO_DATA              = linux.IFLA_INFO_DATA

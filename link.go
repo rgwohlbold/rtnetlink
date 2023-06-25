@@ -163,14 +163,14 @@ func (l *LinkService) Get(index uint32) (LinkMessage, error) {
 // ref: https://lwn.net/Articles/236919/
 // We explicitly use RTM_NEWLINK to set link attributes instead of
 // RTM_SETLINK because:
-// - using RTM_SETLINK is actually an old rtnetlink API, not supporting most
-//   attributes common today
-// - using RTM_NEWLINK is the prefered way to create AND update links
-// - RTM_NEWLINK is backward compatible to RTM_SETLINK
+//   - using RTM_SETLINK is actually an old rtnetlink API, not supporting most
+//     attributes common today
+//   - using RTM_NEWLINK is the prefered way to create AND update links
+//   - RTM_NEWLINK is backward compatible to RTM_SETLINK
 func (l *LinkService) Set(req *LinkMessage) error {
 	flags := netlink.Request | netlink.Acknowledge
 	_, err := l.c.Execute(req, unix.RTM_NEWLINK, flags)
-
+/PROTO
 	return err
 }
 
@@ -215,6 +215,7 @@ type LinkAttributes struct {
 	PhysPortID       *string          // Interface unique physical port identifier within the NIC
 	PhysPortName     *string          // Interface physical port name within the NIC
 	PhysSwitchID     *string          // Unique physical switch identifier of a switch this port belongs to
+	ProtoDown        *uint8           // Whether a protocol error has been detected on the port
 	QueueDisc        string           // Queueing discipline
 	Master           *uint32          // Master device index (0 value un-enslaves)
 	Stats            *LinkStats       // Interface Statistics
@@ -302,6 +303,9 @@ func (a *LinkAttributes) decode(ad *netlink.AttributeDecoder) error {
 		case unix.IFLA_PHYS_PORT_NAME:
 			v := ad.String()
 			a.PhysPortName = &v
+		case unix.IFLA_PROTO_DOWN:
+			v := ad.Uint8()
+			a.ProtoDown = &v
 		case unix.IFLA_QDISC:
 			a.QueueDisc = ad.String()
 		case unix.IFLA_STATS:
@@ -349,6 +353,10 @@ func (a *LinkAttributes) encode(ae *netlink.AttributeEncoder) error {
 
 	if a.OperationalState != OperStateUnknown {
 		ae.Uint8(unix.IFLA_OPERSTATE, uint8(a.OperationalState))
+	}
+
+	if a.ProtoDown != nil {
+		ae.Uint8(unix.IFLA_PROTO_DOWN, *a.ProtoDown)
 	}
 
 	if a.Info != nil {

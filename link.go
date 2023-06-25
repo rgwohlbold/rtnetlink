@@ -170,7 +170,6 @@ func (l *LinkService) Get(index uint32) (LinkMessage, error) {
 func (l *LinkService) Set(req *LinkMessage) error {
 	flags := netlink.Request | netlink.Acknowledge
 	_, err := l.c.Execute(req, unix.RTM_NEWLINK, flags)
-/PROTO
 	return err
 }
 
